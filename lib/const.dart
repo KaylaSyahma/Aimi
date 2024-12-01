@@ -7,3 +7,5 @@ const thirdColor = Color(0xFFED7E1C);
 
 // Text Color
 const textColor = Color(0xFF736B66);
+
+const defaultPadding = 20.0;
