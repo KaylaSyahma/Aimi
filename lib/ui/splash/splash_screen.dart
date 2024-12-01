@@ -1,3 +1,4 @@
+import 'package:finpro_11/const.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
           //na ini, bakal di replace ke sini
           // ignore: use_build_context_synchronously
           context,
-          '/on-boarding'); // Navigasi ke halaman utama
+          '/get-started'); // Navigasi ke halaman utama
     });
   }
 
@@ -40,6 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
+                color: primaryColor,
                 fontWeight: FontWeight.w800,
                 letterSpacing: -0.30,
               ),
