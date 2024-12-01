@@ -1,4 +1,6 @@
 import 'package:finpro_11/ui/onBoarding/get_started.dart';
+import 'package:finpro_11/ui/chat/chat_screen.dart';
+import 'package:finpro_11/ui/home.dart';
 import 'package:finpro_11/ui/onBoarding/onBoarding_screen.dart';
 import 'package:finpro_11/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,8 @@ class _CuhkState extends State<Cuhk> {
         '/' : (context) => const SplashScreen(),
         '/get-started' : (context) => const GetStarted(),
         '/on-boarding' : (context) => const OnboardingScreen(),
+        '/home' : (context) => const Home(),
+        '/chat' : (context) => const ChatScreen(),
       },
     );
   }
