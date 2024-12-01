@@ -166,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     if (isUser) const SizedBox(width: 8),
                     if (isUser)
                       const CircleAvatar(
-                        backgroundColor: thirdColor,
+                        backgroundColor: tertiaryColor,
                         child: Icon(Icons.person, color: Colors.white),
                       ),
                   ],

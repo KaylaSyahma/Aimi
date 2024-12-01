@@ -96,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 } else {
                                   // Jika di slide terakhir, arahkan ke halaman lain
                                   Navigator.pushReplacementNamed(
-                                      context, '/home');
+                                      context, '/signup');
                                 }
                               },
                               icon: Icon(

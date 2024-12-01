@@ -18,7 +18,7 @@ class GetStarted extends StatelessWidget {
           children: [
             const Image(image:  AssetImage('assets/icons/logo_circle.png')),
             const SizedBox(height: 16,),
-            const Text("Welcome to the CUHK\nAI Therapist",
+            const Text("Welcome to the Aimi\nAI Therapist",
               style: TextStyle(
                 color: primaryColor,
                 fontSize: 30,
@@ -61,8 +61,10 @@ class GetStarted extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Already have an account?"),
-                TextButton(onPressed: (){}, 
-                  child: const Text("Sign In", style:  TextStyle(color: thirdColor),)
+                TextButton(onPressed: (){
+                  Navigator.pushNamed(context, '/signin');
+                }, 
+                  child: const Text("Sign In", style:  TextStyle(color: tertiaryColor),)
                 )
               ],
             )
