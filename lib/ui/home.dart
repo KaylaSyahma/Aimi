@@ -6,17 +6,38 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F6F6),
+      backgroundColor: const Color(0xFFF6F6F6), // Background sesuai desain
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const SizedBox.shrink(),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.black),
-            onPressed: () {
-              // Navigate to settings screen
-            },
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Hello,\nKayla Syahma',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4F3422),
+              ),
+            ),
+            // Tombol pengaturan berada di sebelah kanan
+            IconButton(
+              icon: const Icon(Icons.settings, color: Color(0xFF4F3422)),
+              onPressed: () {
+                // Aksi ketika tombol pengaturan ditekan
+              },
+            ),
+          ],
+        ),
+        actions: const [
+          // Avatar profil muncul setelah tombol pengaturan
+          Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(
+              radius: 20,
+              backgroundImage: AssetImage('assets/sample_profile.jpg'), // Gambar profil
+            ),
           ),
         ],
       ),
@@ -25,16 +46,7 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 16),
-            const Text(
-              'Hello,\nKayla Syahma',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4F3422),
-              ),
-            ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 24),
             const Text(
               'How would you like to interact with the AI?',
               style: TextStyle(
@@ -84,17 +96,17 @@ class Home extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFF9BB168)),
+        border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            blurRadius: 6,
+            blurRadius: 8,
             offset: const Offset(0, 4),
           ),
         ],
       ),
       child: ListTile(
-        leading: Image.asset(imagePath, width: 56, height: 56),
+        leading: Image.asset(imagePath, width: 56, height: 56), // Gambar ilustrasi AI
         title: Text(
           title,
           style: const TextStyle(
@@ -104,7 +116,7 @@ class Home extends StatelessWidget {
           ),
         ),
         onTap: () {
-          // Navigate to interaction mode
+          // Aksi ketika tombol di-tap
         },
       ),
     );
