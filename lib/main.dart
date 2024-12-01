@@ -1,19 +1,20 @@
 import 'package:finpro_11/ui/chat/chat_screen.dart';
-// import 'package:finpro_11/ui/home.dart';
+import 'package:finpro_11/ui/onBoarding/onBoarding_screen.dart';
+import 'package:finpro_11/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Cuhk());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class Cuhk extends StatefulWidget {
+  const Cuhk({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Cuhk> createState() => _CuhkState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _CuhkState extends State<Cuhk> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +23,11 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'Urbanist', // Mengatur font global
       ),
-      home: const ChatScreen(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const ChatScreen(),
+        '/on-boarding' : (context) => const OnboardingScreen(),
+      },
     );
   }
 }
