@@ -2,7 +2,8 @@ import 'package:finpro_11/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:finpro_11/const.dart';
 
-class ChatScreen extends StatefulWidget { //karna chat melibatkan perubahan data (pesan masuk/keluar), makanya pke stateful
+class ChatScreen extends StatefulWidget {
+  //karna chat melibatkan perubahan data (pesan masuk/keluar), makanya pke stateful
   const ChatScreen({super.key});
 
   @override
@@ -15,21 +16,23 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<Map<String, String>> _messages =
       []; // List untuk menyimpan pesan dan tipe (user/bot)
 //  Tempat nyimpen semua pesan chat (dari user atau bot).
- final TextEditingController _messageController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
 
   void _sendMessage(String text) {
-    if (text.trim().isNotEmpty) { // Cek dulu teksnya kosong/ga
-      setState(() { //Ngasih tahu Flutter kalo ada data yang di-update, biar layar ikut berubah.
+    if (text.trim().isNotEmpty) {
+      // Cek dulu teksnya kosong/ga
+      setState(() {
+        //Ngasih tahu Flutter kalo ada data yang di-update, biar layar ikut berubah.
         //Masukin pesan ke daftar _message
         _messages.add({'sender': 'user', 'text': text.trim()});
         // sender itu siapa yang kirim, text itu isi pesannya.
 // _messageController: Ngontrol teks yang ditulis di kolom input (biar bisa diambil atau dihapus).
       });
       _messageController.clear(); //kosongin inputan setelah dikirim
-      
 
       // Periksa kata kunci untuk balasan otomatis
-      _getAutoResponse(text.trim()); //text.trim buat Ngilangin spasi kosong di awal/akhir teks.
+      _getAutoResponse(text
+          .trim()); //text.trim buat Ngilangin spasi kosong di awal/akhir teks.
       // _getAutorespone buat manggil fungsi nyuruh kasih balasan otomatis
     }
   }
@@ -54,20 +57,19 @@ class _ChatScreenState extends State<ChatScreen> {
     'menyerah': "Menyerah memang terasa mudah, tapi tidak pernah ada kemajuan tanpa usaha. Cobalah sedikit lagi, karena di ujung perjuangan itu pasti ada hasil yang tak terduga! Apa kamu butuh motivasi?",
   };
 
-  for (final keyword in responses.keys) {
-    if (userMessage.contains(keyword)) {
-      Future.delayed(const Duration(seconds: 1), () {
-        // ngasih jeda 1 detik biar kerasa realistis
-        setState(() {
-          _messages.add({'sender': 'bot', 'text': responses[keyword]!});
-          // ini versi botnya, jadi sendernya bot, isi teks nya sesuai keyword user
+    for (final keyword in responses.keys) {
+      if (userMessage.contains(keyword)) {
+        Future.delayed(const Duration(seconds: 1), () {
+          // ngasih jeda 1 detik biar kerasa realistis
+          setState(() {
+            _messages.add({'sender': 'bot', 'text': responses[keyword]!});
+            // ini versi botnya, jadi sendernya bot, isi teks nya sesuai keyword user
+          });
         });
-      });
-      break;
+        break;
+      }
     }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,30 +79,32 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: const Color(0xFFF6F6F6),
         elevation: 1,
         foregroundColor: Colors.white,
-        title: Row( 
+        title: Row(
           //dikasih row Biar pesan user muncul di kanan dan bot di kiri.
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Text to Text', style: TextStyle(color: Colors.black)),
+            const Text('Text to Text',
+                style: TextStyle(
+                    color: primaryColor, fontWeight: FontWeight.w800)),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color:
-                    secondaryColor,
+                color: secondaryColor,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: const Text(
                 'Ready',
                 style: TextStyle(
                   color: Colors.white,
-                  // fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ],
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: primaryColor),
           onPressed: () {
             Navigator.of(context).pop(const Home());
           },
@@ -131,7 +135,7 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                         child: Icon(Icons.android, color: secondaryColor),
                       ),
                     if (!isUser) const SizedBox(width: 8),
-                    Flexible( 
+                    Flexible(
                       //buat bikin klo teks nya panjang, bakal pindah ke bawah. jadi ga nabrak kotaknya
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 4.0),
@@ -163,7 +167,8 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                     if (isUser)
                       const CircleAvatar(
                         backgroundColor: secondaryColor,
-                        child: Icon(Icons.account_circle_rounded, color: Colors.white),
+                        child: Icon(Icons.account_circle_rounded,
+                            color: Colors.white),
                       ),
                   ],
                 );
@@ -184,6 +189,20 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                         borderRadius: BorderRadius.circular(24),
                         borderSide: BorderSide.none,
                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide(
+                          color: tertiaryColor, // Warna border saat aktif (focus)
+                          width: 2.0,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        borderSide: BorderSide(
+                          color: Colors.grey, // Warna border saat tidak aktif
+                          width: 1.5,
+                        ),
+                      ),
                       filled: true,
                       fillColor: Colors.white,
                     ),
@@ -191,7 +210,10 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                 ),
                 const SizedBox(width: 8),
                 IconButton(
-                  icon: const Icon(Icons.send),
+                  icon: const Icon(
+                    Icons.send,
+                    color: primaryColor,
+                  ),
                   onPressed: () => _sendMessage(_messageController.text),
                 ),
               ],

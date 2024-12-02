@@ -24,39 +24,23 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F4F2),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            child: Container(
-              width: 20.0,
-              height: 20.0,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 2,
-                  color: primaryColor,
-                ),
-              ),
-              child: const Icon(
-                Icons.arrow_back_ios_new_rounded, 
-                color: primaryColor, 
-                size: 15.0
-              ),
-            ),
-          ),
-          onTap: () {
-            Navigator.pushNamed(context, "/signin");
+        backgroundColor: backgroundColor,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
           },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: primaryColor,
+          ),
         ),
+        elevation: 0,
         title: const Text(
           "Assessment",
           style: TextStyle(
-            fontSize: 20.0,
             color: primaryColor,
-            fontWeight: FontWeight.w700,
-            fontFamily: "Urbanist",
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -140,7 +124,7 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Action for the next button
+                Navigator.pushNamed(context, '/sleep-quality');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
