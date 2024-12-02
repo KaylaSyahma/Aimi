@@ -31,7 +31,7 @@ class _CuhkState extends State<Cuhk> {
       ),
       initialRoute: '/',
       routes: {
-        '/' : (context) => const SplashScreen(),
+        '/' : (context) => const Home(),
         '/get-started' : (context) => const GetStarted(),
         '/on-boarding' : (context) => const OnboardingScreen(),
         '/signin' : (context) => const LoginScreen(),
