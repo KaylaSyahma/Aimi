@@ -6,11 +6,11 @@ class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Home> createState() => _HomeState(); //nyimpen logika
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 0; //nyimpen menu yang lagi aktif di bottom navabrr
 
 void _onItemTapped(int index) {
   setState(() {
@@ -18,11 +18,12 @@ void _onItemTapped(int index) {
   });
 
   switch (index) {
+    //  cara gampang untuk ngecek menu mana yang dipilih dan lakuin aksi yang sesuai
     case 0:
       // Home Screen
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Home()), // Sesuaikan dengan nama layar Home Anda
+        MaterialPageRoute(builder: (context) => const Home()), 
       );
       break;
 
@@ -71,11 +72,13 @@ void _onItemTapped(int index) {
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              // CrossAxAl itu untuk ngatur posisi element berdasar poros silang (Row jadi vertikal, Column jadi horizontal) jadi kayak tukeran aja sama mainAxAl
               children: [
                 const SizedBox(height: 16),
                 // Header
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // MainAxal itu buat ngatur posisi berdasarkan poros utama
                   children: [
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,6 +197,7 @@ void _onItemTapped(int index) {
   }
 
   Widget _buildIcon(int index, IconData icon, Color color) {
+    // _build icon itu function buat ngebikin icon di BottomNavigationBar. Kalau tabnya dipilih, iconnya bakal berubah warnanya jadi lebih terang
     bool isSelected = _selectedIndex == index;
     return Container(
       decoration: isSelected
@@ -212,11 +216,13 @@ void _onItemTapped(int index) {
   }
 
   GestureDetector _cardOption(BuildContext context, String text, String image) {
+    // metod card option adalah fungsi yang ngebikin card interaktif dengan gambar dan teks.
+    //  buat nangkep aksi tap. Kalau salah satu card di-tap, layar bakal pindah ke ChatScreen
     return GestureDetector(
       onTap: () {
           Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ChatScreen()), // Ganti dengan ChatScreen
+          MaterialPageRoute(builder: (context) => const ChatScreen()),
         );
       },
       child: Container(
