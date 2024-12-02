@@ -27,62 +27,28 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  void _getAutoResponse(String userMessage) {
-    String? botResponse;
+ void _getAutoResponse(String userMessage) {
+  final responses = {
+    'sedih': "Mengapa kamu sedih? Kalo kamu mau cerita, aku ada di sini kok...",
+    'bingung': "Tidak apa-apa merasa bingung! Cobalah untuk...",
+    'bahagia': "Senang mendengar itu! Tetap jaga energi positifmu...",
+    'marah': "Aku mengerti kamu sedang marah. Cobalah...",
+    'kesel': "Kekesalan itu wajar, tapi jangan dibiarkan berlarut-larut ya...",
+    'mood': "Mood naik-turun memang bisa menyulitkan, tapi jangan khawatir!..."
+  };
 
-    // Cek jika ada kata kunci tertentu
-    // Cek jika ada kata kunci tertentu
-    if (userMessage.contains('sedih') || userMessage.contains('down')) {
-      botResponse =
-          "Mengapa kamu sedih? kalo kamu mau cerita, aku ada disini kok. atau kamu mau mencoba melakukan ini:\n"
-          "- Mendengarkan musik yang kamu suka 🎵\n"
-          "- Jalan-jalan sebentar untuk udara segar 🌳\n"
-          "- Cerita dengan teman dekatmu 💬\n"
-          "- Atau coba menonton komedi untuk tertawa 😂";
-    } else if (userMessage.contains('bingung')) {
-      botResponse = "Tidak apa-apa merasa bingung! Cobalah untuk:\n"
-          "- Tuliskan pikiranmu di atas kertas 📝\n"
-          "- Fokus pada satu hal kecil yang bisa kamu selesaikan 💡\n"
-          "- Ambil waktu untuk istirahat sejenak.";
-    } else if (userMessage.contains('bahagia')) {
-      botResponse =
-          "Senang mendengar itu! Tetap jaga energi positifmu dan sebarkan kebahagiaan ke sekitarmu! 😊🌟";
-    } else if (userMessage.toLowerCase().contains('hai') ||
-        userMessage.toLowerCase().contains('halo') ||
-        userMessage.toLowerCase().contains('holaa') ||
-        userMessage.toLowerCase().contains('haaaii') ||
-        userMessage.toLowerCase().contains('hello') ||
-        userMessage.toLowerCase().contains('hi')) {
-      botResponse = "Hai juga! 😊 Ada yang bisa aku bantu hari ini?";
-    } else if (userMessage.contains('marah')) {
-      botResponse = "Aku mengerti kamu sedang marah 😤. Cobalah:\n"
-          "- Tarik napas dalam-dalam beberapa kali 🧘\n"
-          "- Dengarkan musik yang menenangkan 🎶\n"
-          "- Jika memungkinkan, luangkan waktu untuk sendiri sejenak.";
-    } else if (userMessage.contains('kesel')) {
-      botResponse =
-          "Kekesalan itu wajar, tapi jangan dibiarkan berlarut-larut ya! Cobalah:\n"
-          "- Berjalan-jalan untuk menenangkan pikiran 🌳\n"
-          "- Minum teh atau kopi favoritmu ☕\n"
-          "- Tulis apa yang membuatmu kesal dan cari solusinya ✍️.";
-    } else if (userMessage.contains('moodyan') ||
-        userMessage.contains('mood')) {
-      botResponse =
-          "Mood naik-turun memang bisa menyulitkan, tapi jangan khawatir! Kamu bisa coba:\n"
-          "- Mendengarkan playlist favoritmu 🎵\n"
-          "- Melakukan hal yang kamu sukai, seperti membaca atau menggambar 🎨\n"
-          "- Berbicara dengan teman baikmu 💬.";
-    }
-
-    if (botResponse != null) {
-      // Tambahkan balasan bot ke list
+  for (final keyword in responses.keys) {
+    if (userMessage.contains(keyword)) {
       Future.delayed(const Duration(seconds: 1), () {
         setState(() {
-          _messages.add({'sender': 'bot', 'text': botResponse!});
+          _messages.add({'sender': 'bot', 'text': responses[keyword]!});
         });
       });
+      break;
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +132,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     if (isUser) const SizedBox(width: 8),
                     if (isUser)
                       const CircleAvatar(
-                        backgroundColor: thirdColor,
+                        backgroundColor: tertiaryColor,
                         child: Icon(Icons.person, color: Colors.white),
                       ),
                   ],
