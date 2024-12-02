@@ -9,105 +9,157 @@ class HealthGoalsScreen extends StatefulWidget {
 }
 
 class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
+  final List<Map<String, dynamic>> pickerData = [
+    {'label': 'I wanna reduce stress', 'isSelected': false, 'icon': Icons.spa},
+    {'label': 'I wanna improve fitness', 'isSelected': false, 'icon': Icons.fitness_center},
+    {'label': 'I wanna eat healthier', 'isSelected': false, 'icon': Icons.restaurant},
+    {'label': 'I wanna sleep better', 'isSelected': false, 'icon': Icons.bed},
+    {'label': 'I wanna meditate more', 'isSelected': false, 'icon': Icons.self_improvement},
+  ];
+
   int? selectedPicker;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF7F4F2),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: GestureDetector(
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            width: 20.0,
-            height: 20.0,
-            color: Colors.transparent,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: primaryColor
-              )
-            )
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            child: Container(
+              width: 20.0,
+              height: 20.0,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                  width: 2,
+                  color: primaryColor,
+                ),
+              ),
+              child: const Icon(
+                Icons.arrow_back_ios_new_rounded, 
+                color: primaryColor, 
+                size: 15.0
+              ),
+            ),
           ),
-          onTap: ()  {
+          onTap: () {
             Navigator.pushNamed(context, "/signin");
           },
         ),
         title: const Text(
           "Assessment",
           style: TextStyle(
-            fontSize: 18.0,
+            fontSize: 20.0,
             color: primaryColor,
             fontWeight: FontWeight.w700,
-            fontFamily: "Urbanist"
+            fontFamily: "Urbanist",
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          
           children: [
+            const SizedBox(height: 30.0),
             const Text(
               "What’s your health goal?",
               style: TextStyle(
-                fontSize: 40,
+                fontSize: 30,
                 color: primaryColor,
-                fontWeight: FontWeight.w800
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
-            Column(
-              children: List.generate(6, (index) {
-                return ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Warna background button
-                    side: BorderSide(
-                      color: selectedPicker == index
-                          ? Colors.blue
-                          : Colors.grey, // Border berubah jika dipilih
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      selectedPicker = index; // Simpan pilihan
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Picker ${index + 1}"), // Teks button
-                      Container(
-                        width: 20, // Lebar oval
-                        height: 20, // Tinggi oval
-                        decoration: BoxDecoration(
-                          color: selectedPicker == index
-                              ? Colors.blue
-                              : Colors.transparent, // Warna jika dipilih
-                          border: Border.all(
-                            color: Colors.blue,
-                            width: 2, // Ketebalan border
+            const SizedBox(height: 30),
+            Expanded(
+              child: ListView.builder(
+                itemCount: pickerData.length,
+                itemBuilder: (context, index) {
+                  final item = pickerData[index];
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        item['isSelected'] = !item['isSelected'];
+                        selectedPicker = item['isSelected'] ? index : null;
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10.0),
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: item['isSelected'] ? secondaryColor : Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: item['isSelected'] ? const Color(0xFF9BB168).withOpacity(0.3) : Colors.transparent,
+                            spreadRadius: 3,
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
                           ),
-                          shape: BoxShape.circle, // Bentuk oval
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                );
-              }),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Icon(
+                              item['icon'],
+                              color: item['isSelected'] ? Colors.white : textColor,
+                              size: 24.0,
+                            ),
+                          ),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Text(
+                              item['label'],
+                              style: TextStyle(
+                                color: item['isSelected'] ? Colors.white : primaryColor,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            item['isSelected'] ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+                            color: item['isSelected'] ? Colors.white : primaryColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-            const Spacer(), // Spacer untuk dorong ke bawah
-
-            // Tombol Next
+            // Spacer to push the next button down
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: selectedPicker != null
-                  ? () {
-                      Navigator.pushNamed(context, '/nextScreen'); // Navigasi ke screen berikutnya
-                    }
-                  : null, // Tombol nonaktif jika belum dipilih
-              child: const Text("Next"), // Teks button
-            )
+              onPressed: () {
+                // Action for the next button
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColor,
+                minimumSize: const Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+              ),
+              child: const Text(
+                "Next",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 190),
           ],
         ),
       ),
