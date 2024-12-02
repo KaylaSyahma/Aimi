@@ -1,3 +1,4 @@
+import 'package:finpro_11/ui/chat/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -44,7 +45,8 @@ class Home extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.tune, color: Color(0xFF4F3422)),
+                          icon:
+                              const Icon(Icons.tune, color: Color(0xFF4F3422)),
                           onPressed: () {
                             // Aksi ketika tombol pengaturan ditekan
                           },
@@ -69,154 +71,198 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // Konten Manual
-                GestureDetector(
-                  onTap: () {
-                    // Aksi ketika di-tap
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset('assets/speech_speech.png', width: 48, height: 48),
-                        const SizedBox(width: 12),
-                        const Expanded(
-                          child: Text(
-                            'You: Speech\nAI: Speech',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF4F3422),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    // Aksi ketika di-tap
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset('assets/speech_text.png', width: 48, height: 48),
-                        const SizedBox(width: 12),
-                        const Expanded(
-                          child: Text(
-                            'You: Speech\nAI: Text',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF4F3422),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    // Aksi ketika di-tap
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset('assets/text_text.png', width: 48, height: 48),
-                        const SizedBox(width: 12),
-                        const Expanded(
-                          child: Text(
-                            'You: Text\nAI: Text',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF4F3422),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    // Aksi ketika di-tap
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset('assets/text_speech.png', width: 48, height: 48),
-                        const SizedBox(width: 12),
-                        const Expanded(
-                          child: Text(
-                            'You: Text\nAI: Speech',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF4F3422),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+               GestureDetector(
+  onTap: () {
+    // Aksi ketika di-tap, pindah ke ChatScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChatScreen()),
+    );
+  },
+  child: Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        const SizedBox(width: 12),
+        const Expanded(
+          child: Text(
+            'You: Speech\nAI: Speech',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4F3422),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Image.asset(
+            'assets/images/speech_speech.png',
+            width: 53, // Atur sesuai keinginan
+            height: 53, // Sesuaikan dengan kotak
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+const SizedBox(height: 16),
+GestureDetector(
+  onTap: () {
+    // Aksi ketika di-tap, pindah ke ChatScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChatScreen()),
+    );
+  },
+  child: Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        const SizedBox(width: 12),
+        const Expanded(
+          child: Text(
+            'You: Speech\nAI: Text',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4F3422),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Image.asset(
+            'assets/images/speech_text.png',
+            width: 36,
+            height: 40,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+const SizedBox(height: 16),
+GestureDetector(
+  onTap: () {
+    // Aksi ketika di-tap, pindah ke ChatScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChatScreen()),
+    );
+  },
+  child: Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        const SizedBox(width: 12),
+        const Expanded(
+          child: Text(
+            'You: Text\nAI: Text',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4F3422),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Image.asset(
+            'assets/images/text_text.png',
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+const SizedBox(height: 16),
+GestureDetector(
+  onTap: () {
+    // Aksi ketika di-tap, pindah ke ChatScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ChatScreen()),
+    );
+  },
+  child: Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: const Color(0xFF9BB168), width: 1.5),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        const SizedBox(width: 12),
+        const Expanded(
+          child: Text(
+            'You: Text\nAI: Speech',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4F3422),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Image.asset(
+            'assets/images/text_speech.png',
+            width: 53,
+            height: 53,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
               ],
             ),
           ),
