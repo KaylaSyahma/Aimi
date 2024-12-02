@@ -1,9 +1,8 @@
-import 'package:finpro_11/ui/assessment/health_goals_screen.dart';
 import 'package:finpro_11/ui/auth/login_screen.dart';
 import 'package:finpro_11/ui/auth/register_screen.dart';
-import 'package:finpro_11/ui/onBoarding/get_started.dart';
 import 'package:finpro_11/ui/chat/chat_screen.dart';
 import 'package:finpro_11/ui/home.dart';
+import 'package:finpro_11/ui/onBoarding/get_started.dart';
 import 'package:finpro_11/ui/onBoarding/onBoarding_screen.dart';
 import 'package:finpro_11/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';

@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 37,
             ),
             Text(
-              "Cuhk \nAI Therapist",
+              "Aimi \nAI Therapist",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,

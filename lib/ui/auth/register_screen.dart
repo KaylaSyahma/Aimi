@@ -1,6 +1,7 @@
 import 'package:finpro_11/const.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
