@@ -18,16 +18,16 @@ List<OnboardingContent> onboardingContent = [
   OnboardingContent(
     image: 'assets/images/onboard3.svg', 
     description: 'Personalize Your Mental Health State With AI', 
-    backgroundColor:  Color(0xFFE5EAD6)
+    backgroundColor:  const Color(0xFFE5EAD6)
   ),
   OnboardingContent(
     image: 'assets/images/onboard1.svg', 
     description: 'Intelligent Mood Tracking Emotion Insights', 
-    backgroundColor:  Color(0xFFEC7D1C)
+    backgroundColor:  const Color(0xFFEC7D1C)
   ),
   OnboardingContent(
     image: 'assets/images/onboard2.svg', 
     description: 'Mindful Resources That Makes You Happy', 
-    backgroundColor:  Color(0xFFFFEAC1)
+    backgroundColor:  const Color(0xFFFFEAC1)
   ),
 ];

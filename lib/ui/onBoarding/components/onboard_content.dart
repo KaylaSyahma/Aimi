@@ -21,7 +21,7 @@ class _OnBoardingState extends State<OnBoarding> {
               height: size.height,
               child: Stack(
                 children: [
-                  Image(image: AssetImage('assets/images/onboard1.png')),
+                  const Image(image: AssetImage('assets/images/onboard1.png')),
                   Container(
                     margin: EdgeInsets.only(top: size.height * 0.57), // Adjust margin to make space for the image
                     padding: const EdgeInsets.only(

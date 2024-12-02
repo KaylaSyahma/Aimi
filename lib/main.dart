@@ -1,10 +1,10 @@
+import 'package:finpro_11/ui/assessment/sleep_quality.dart';
 import 'package:finpro_11/ui/auth/login_screen.dart';
 import 'package:finpro_11/ui/auth/register_screen.dart';
 import 'package:finpro_11/ui/chat/chat_screen.dart';
 import 'package:finpro_11/ui/home.dart';
 import 'package:finpro_11/ui/onBoarding/get_started.dart';
 import 'package:finpro_11/ui/onBoarding/onBoarding_screen.dart';
-import 'package:finpro_11/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,11 +29,12 @@ class _CuhkState extends State<Cuhk> {
       ),
       initialRoute: '/',
       routes: {
-        '/' : (context) => const SplashScreen(),
+        '/' : (context) => const SleepQuality(),
         '/get-started' : (context) => const GetStarted(),
         '/on-boarding' : (context) => const OnboardingScreen(),
         '/signin' : (context) => const LoginScreen(),
         '/signup' : (context) => const RegisterScreen(),
+        '/sleep-quality' : (context) => const SleepQuality(),
         '/home' : (context) => const Home(),
         '/chat' : (context) => const ChatScreen(),
       },
