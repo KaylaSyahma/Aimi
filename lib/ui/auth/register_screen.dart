@@ -335,14 +335,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           gravity: ToastGravity.BOTTOM,
                           toastDuration: const Duration(seconds: 2),
                         );
-                        Navigator.pushReplacementNamed(context, '/home');
+                        Navigator.pushReplacementNamed(context, '/health-goals');
                       }
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Sign In",
+                          "Sign Up",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,

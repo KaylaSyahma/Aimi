@@ -236,8 +236,7 @@ class _LoginScreen extends State<LoginScreen> {
                           if (_formKey.currentState!.validate()) {
                             fToast.showToast(
                               child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 45.0, vertical: 20.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 20.0),
                                 decoration: BoxDecoration(
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(8.0),
