@@ -55,21 +55,23 @@ class _SleepQualityState extends State<SleepQuality> {
               const SizedBox(height: 40), // Spasi antara teks dan slider
               Center(
                 child: SizedBox(
-                  height: 400, // Atur tinggi slider dan komponennya
+                  height: 480, // Atur tinggi slider dan komponennya
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      // Komponen Emotion Slider
+                      // round untuk ngebulatin nilai dri slidervalue
                       EmotionSlider(currentLevel: sliderValue.round()),
 
                       // Slider Vertikal
                       Positioned(
+                        // dibagi dua buat ditengah layar, dikasih -35 biar agar ke kiri
                         left: MediaQuery.of(context).size.width / 2 -35, // Posisikan slider di tengah
                         top: 0,
                         bottom: 0,
                         child: RotatedBox(
                           quarterTurns: 3, // Rotasi slider jadi vertikal
                           child: SliderTheme(
+                            // copywith = untuk menyesuaikan sesuai desain sementara ttp pake default dri flutter
                             data: SliderTheme.of(context).copyWith(
                               trackHeight: 15
                             ),

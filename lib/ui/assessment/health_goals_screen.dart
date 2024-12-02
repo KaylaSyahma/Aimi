@@ -11,10 +11,22 @@ class HealthGoalsScreen extends StatefulWidget {
 class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
   final List<Map<String, dynamic>> pickerData = [
     {'label': 'I wanna reduce stress', 'isSelected': false, 'icon': Icons.spa},
-    {'label': 'I wanna improve fitness', 'isSelected': false, 'icon': Icons.fitness_center},
-    {'label': 'I wanna eat healthier', 'isSelected': false, 'icon': Icons.restaurant},
+    {
+      'label': 'I wanna improve fitness',
+      'isSelected': false,
+      'icon': Icons.fitness_center
+    },
+    {
+      'label': 'I wanna eat healthier',
+      'isSelected': false,
+      'icon': Icons.restaurant
+    },
     {'label': 'I wanna sleep better', 'isSelected': false, 'icon': Icons.bed},
-    {'label': 'I wanna meditate more', 'isSelected': false, 'icon': Icons.self_improvement},
+    {
+      'label': 'I wanna meditate more',
+      'isSelected': false,
+      'icon': Icons.self_improvement
+    },
   ];
 
   int? selectedPicker;
@@ -75,10 +87,13 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: item['isSelected'] ? secondaryColor : Colors.white,
+                        color:
+                            item['isSelected'] ? secondaryColor : Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: item['isSelected'] ? const Color(0xFF9BB168).withOpacity(0.3) : Colors.transparent,
+                            color: item['isSelected']
+                                ? const Color(0xFF9BB168).withOpacity(0.3)
+                                : Colors.transparent,
                             spreadRadius: 3,
                             blurRadius: 10,
                             offset: const Offset(0, 4),
@@ -94,7 +109,8 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
                             ),
                             child: Icon(
                               item['icon'],
-                              color: item['isSelected'] ? Colors.white : textColor,
+                              color:
+                                  item['isSelected'] ? Colors.white : textColor,
                               size: 24.0,
                             ),
                           ),
@@ -103,15 +119,21 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
                             child: Text(
                               item['label'],
                               style: TextStyle(
-                                color: item['isSelected'] ? Colors.white : primaryColor,
+                                color: item['isSelected']
+                                    ? Colors.white
+                                    : primaryColor,
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
                           Icon(
-                            item['isSelected'] ? Icons.radio_button_checked : Icons.radio_button_unchecked,
-                            color: item['isSelected'] ? Colors.white : primaryColor,
+                            item['isSelected']
+                                ? Icons.radio_button_checked
+                                : Icons.radio_button_unchecked,
+                            color: item['isSelected']
+                                ? Colors.white
+                                : primaryColor,
                           ),
                         ],
                       ),
@@ -132,7 +154,8 @@ class _HealthGoalsScreenState extends State<HealthGoalsScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 15.0, horizontal: 50.0),
               ),
               child: const Text(
                 "Next",

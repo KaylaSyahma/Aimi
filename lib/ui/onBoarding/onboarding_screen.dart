@@ -134,6 +134,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               end: Alignment.centerRight,
             ),
           ),
+          // seiring user bergerak, progress bar akan berubah dan meningkat secara proposional
           child: FractionallySizedBox(
             alignment: Alignment.centerLeft,
             widthFactor: (_currentPage + 1) / onboardingContent.length,

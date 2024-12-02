@@ -24,7 +24,7 @@ class EmotionSlider extends StatelessWidget {
 
   Widget buildLevel(String text, IconData icon, String subText, String svgPath, {bool isActive = false}) {
     return SizedBox(
-      height: 70, // Tinggi setiap item
+      height: 90, // Tinggi setiap item
       child: Stack(
         alignment: Alignment.center,
         children: [
