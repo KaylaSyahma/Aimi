@@ -13,8 +13,15 @@ class _LoginScreen extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool isFocused = false;
+  bool isEmailFocused = false;
+  bool isPasswordFocused = false;
   final FToast fToast = FToast();
+
+  @override
+  void initState() {
+  super.initState();
+  fToast.init(context); // Inisialisasi fToast di sini
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +81,7 @@ class _LoginScreen extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(50.0),
                       boxShadow: [
                         // Shadow hanya muncul saat fokus
-                        if (isFocused)
+                        if (isEmailFocused)
                           BoxShadow(
                             color: const Color(0xFF9BB168).withOpacity(0.2),
                             blurRadius: 4,
@@ -85,19 +92,19 @@ class _LoginScreen extends State<LoginScreen> {
                     child: Focus(
                       onFocusChange: (hasFocus) {
                         setState(() {
-                          isFocused = hasFocus;
+                          isEmailFocused = hasFocus;
                         });
                       },
                       child: TextFormField(
                         controller: _emailController,
                         onTap: () {
                           setState(() {
-                            isFocused = true;
+                            isEmailFocused = true;
                           });
                         },
                         onEditingComplete: () {
                           setState(() {
-                            isFocused = false;
+                            isEmailFocused = false;
                           });
                         },
                         decoration: InputDecoration(
@@ -154,7 +161,7 @@ class _LoginScreen extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(50.0),
                       boxShadow: [
                         // Shadow hanya muncul saat fokus
-                        if (isFocused)
+                        if (isPasswordFocused)
                           BoxShadow(
                             color: const Color(0xFF9BB168).withOpacity(0.2),
                             blurRadius: 4,
@@ -165,7 +172,7 @@ class _LoginScreen extends State<LoginScreen> {
                     child: Focus(
                       onFocusChange: (hasFocus) {
                         setState(() {
-                          isFocused = hasFocus;
+                          isPasswordFocused = hasFocus;
                         });
                       },
                       child: TextFormField(
@@ -173,12 +180,12 @@ class _LoginScreen extends State<LoginScreen> {
                         obscureText: true,
                         onTap: () {
                           setState(() {
-                            isFocused = true;
+                            isPasswordFocused = true;
                           });
                         },
                         onEditingComplete: () {
                           setState(() {
-                            isFocused = false;
+                            isPasswordFocused = false;
                           });
                         },
                         decoration: InputDecoration(

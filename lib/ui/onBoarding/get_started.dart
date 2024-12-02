@@ -7,10 +7,10 @@ class GetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF7F4F2),
+      backgroundColor: const Color(0xFFF7F4F2),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFF7F4F2),
+        backgroundColor: const Color(0xFFF7F4F2),
       ),
       body: SafeArea(
         child: Column(
@@ -34,9 +34,9 @@ class GetStarted extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 32,),
+            const SizedBox(height: 32,),
             const Image(image: AssetImage('assets/images/get.png')),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 95),
               child: ElevatedButton(
@@ -61,8 +61,11 @@ class GetStarted extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Already have an account?"),
-                TextButton(onPressed: (){}, 
-                  child: const Text("Sign In", style:  TextStyle(color: thirdColor),)
+                TextButton(
+                  onPressed: (){
+                    Navigator.pushNamed(context, "/signin");
+                  }, 
+                  child: const Text("Sign In", style:  TextStyle(color: tertiaryColor),)
                 )
               ],
             )

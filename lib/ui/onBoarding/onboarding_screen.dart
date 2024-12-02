@@ -40,7 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     itemCount: onboardingContent.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: 300),
+                        margin: const EdgeInsets.only(bottom: 300),
                         child: SvgPicture.asset(
                           onboardingContent[index].image,
                           height: size.height * 0.3,
@@ -70,18 +70,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Column(
                         children: [
                           // ini buat kayak progress bar nya
-                          SizedBox(height: 34),
+                          const SizedBox(height: 34),
                           _progressBar(),
-                          SizedBox(height: 34,),
+                          const SizedBox(height: 34,),
                           Text(
                             onboardingContent[_currentPage].description,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: primaryColor,
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 34,
                           ),
                           IconButton(
@@ -99,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       context, '/home');
                                 }
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.arrow_forward_ios,
                                 color: Colors.white,
                               ))

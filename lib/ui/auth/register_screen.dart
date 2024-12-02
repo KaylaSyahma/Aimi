@@ -14,8 +14,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool isFocused = false;
+
+  // Focus untuk Text Form Field
+  bool isEmailFocused = false;
+  bool isPasswordFocused = false;
+  bool isUsernameFocused = false;
+
   final FToast fToast = FToast();
+
+  @override
+  void initState() {
+  super.initState();
+  fToast.init(context); // Inisialisasi fToast di sini
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(50.0),
                       boxShadow: [
                         // Shadow hanya muncul saat fokus
-                        if (isFocused)
+                        if (isEmailFocused)
                           BoxShadow(
                             color: const Color(0xFF9BB168).withOpacity(0.2),
                             blurRadius: 4,
@@ -86,19 +97,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Focus(
                       onFocusChange: (hasFocus) {
                         setState(() {
-                          isFocused = hasFocus;
+                          isEmailFocused = hasFocus;
                         });
                       },
                       child: TextFormField(
                         controller: _emailController,
                         onTap: () {
                           setState(() {
-                            isFocused = true;
+                            isEmailFocused = true;
                           });
                         },
                         onEditingComplete: () {
                           setState(() {
-                            isFocused = false;
+                            isEmailFocused = false;
                           });
                         },
                         decoration: InputDecoration(
@@ -155,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(50.0),
                       boxShadow: [
                         // Shadow hanya muncul saat fokus
-                        if (isFocused)
+                        if (isUsernameFocused)
                           BoxShadow(
                             color: const Color(0xFF9BB168).withOpacity(0.2),
                             blurRadius: 4,
@@ -166,19 +177,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Focus(
                       onFocusChange: (hasFocus) {
                         setState(() {
-                          isFocused = hasFocus;
+                          isUsernameFocused = hasFocus;
                         });
                       },
                       child: TextFormField(
                         controller: _nameController,
                         onTap: () {
                           setState(() {
-                            isFocused = true;
+                            isUsernameFocused = true;
                           });
                         },
                         onEditingComplete: () {
                           setState(() {
-                            isFocused = false;
+                            isUsernameFocused = false;
                           });
                         },
                         decoration: InputDecoration(
@@ -235,7 +246,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(50.0),
                       boxShadow: [
                         // Shadow hanya muncul saat fokus
-                        if (isFocused)
+                        if (isPasswordFocused)
                           BoxShadow(
                             color: const Color(0xFF9BB168).withOpacity(0.2),
                             blurRadius: 4,
@@ -246,7 +257,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Focus(
                       onFocusChange: (hasFocus) {
                         setState(() {
-                          isFocused = hasFocus;
+                          isPasswordFocused = hasFocus;
                         });
                       },
                       child: TextFormField(
@@ -254,12 +265,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         obscureText: true,
                         onTap: () {
                           setState(() {
-                            isFocused = true;
+                            isPasswordFocused = true;
                           });
                         },
                         onEditingComplete: () {
                           setState(() {
-                            isFocused = false;
+                            isPasswordFocused = false;
                           });
                         },
                         decoration: InputDecoration(
