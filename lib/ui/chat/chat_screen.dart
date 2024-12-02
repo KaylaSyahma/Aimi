@@ -87,20 +87,29 @@ class _ChatScreenState extends State<ChatScreen> {
                 style: TextStyle(
                     color: primaryColor, fontWeight: FontWeight.w800)),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: secondaryColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const Text(
-                'Ready',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+  decoration: BoxDecoration(
+    color: secondaryColor,
+    borderRadius: BorderRadius.circular(16),
+  ),
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Home()),
+      );
+    },
+    child: const Text(
+      'Ready',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+),
+
           ],
         ),
         leading: IconButton(
@@ -191,14 +200,14 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: tertiaryColor, // Warna border saat aktif (focus)
                           width: 2.0,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.grey, // Warna border saat tidak aktif
                           width: 1.5,
                         ),
