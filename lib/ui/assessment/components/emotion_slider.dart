@@ -42,11 +42,11 @@ class EmotionSlider extends StatelessWidget {
                 fontSize: 20
               ),
               ),
-              SizedBox(height: 8,),
+              const SizedBox(height: 8,),
               Row(
                 children: [
                   Icon(icon, color: isActive ? primaryColor : Colors.grey, size: 16,),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
                   Text(subText, style: TextStyle(
                 color: isActive ? primaryColor : Colors.grey,
                 fontWeight: FontWeight.bold,

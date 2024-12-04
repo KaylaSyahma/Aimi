@@ -37,19 +37,25 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  void _getAutoResponse(String userMessage) {
-    //Kata kunci buat nentuin bot jawab apa
-    final responses = {
-      'sedih':
-          "Mengapa kamu sedih? Kalo kamu mau cerita, aku ada di sini kok...",
-      'bingung': "Tidak apa-apa merasa bingung! Cobalah untuk...",
-      'bahagia': "Senang mendengar itu! Tetap jaga energi positifmu...",
-      'marah': "Aku mengerti kamu sedang marah. Cobalah...",
-      'kesel':
-          "Kekesalan itu wajar, tapi jangan dibiarkan berlarut-larut ya...",
-      'mood':
-          "Mood naik-turun memang bisa menyulitkan, tapi jangan khawatir!..."
-    };
+ void _getAutoResponse(String userMessage) {
+  //Kata kunci buat nentuin bot jawab apa
+  final responses = {
+    'sedih': "Mengapa kamu sedih? Kalo kamu mau cerita, aku ada di sini kok...",
+    'bingung':"Santai aja, semua orang juga pernah bingung kok. Kamu pasti bisa cari solusinya.",
+    'bahagia': "Wah, seneng dengernya! Tetap semangat dan sebarkan bahagiamu ya! 😊",
+    'marah': "Tenang dulu, ya. Kadang marah itu tanda kita peduli. Aku di sini kalau kamu mau cerita.",
+    'kesel': "Aku ngerti kamu lagi kesel. Mungkin coba jalan-jalan bentar atau dengerin musik biar lega.",
+    'Hai': "Halo👋🏻, ada yang bisa dibantu?, ada cerita apa hari ini?",
+    '👋🏻': "Halo👋🏻, ada yang bisa dibantu?, ada cerita apa hari ini?",
+    'Halo': "haii😄, ada yang bisa dibantu?, mau cerita apa hari ini?",
+    'mood': "Aku ngerti rasanya kalau mood gak stabil. Pelan-pelan aja, nanti pasti bisa di atur lagi",
+    'capek': "Capek ya? Jangan lupa istirahat, badan kamu juga butuh recharge",
+    'sepi': "Jangan takut!, Aku disini untukmu! ada yang ingin diceritakan?",
+    'Bosan': "Kamu bosan? Ayo coba hal baru atau nonton sesuatu yang seru! Mungkin bisa nemuin ide baru. 📺",
+    'Terima kasih': "Sama sama, kalo ada yang mau dibantu lagi, Jangan sungkan yaa!",
+    'motivasi': "Jangan pernah ragu sama dirimu. Setiap langkah kecil yang kamu ambil itu berarti, bahkan kalau kamu merasa lambat, itu tetap progress. Terus coba dan jangan berhenti belajar, karena kesuksesan bukan soal seberapa cepat kamu sampai, tapi seberapa kuat kamu bertahan! Semangat terus, ya! 💪",
+    'menyerah': "Menyerah memang terasa mudah, tapi tidak pernah ada kemajuan tanpa usaha. Cobalah sedikit lagi, karena di ujung perjuangan itu pasti ada hasil yang tak terduga! Apa kamu butuh motivasi?",
+  };
 
     for (final keyword in responses.keys) {
       if (userMessage.contains(keyword)) {
@@ -81,20 +87,29 @@ class _ChatScreenState extends State<ChatScreen> {
                 style: TextStyle(
                     color: primaryColor, fontWeight: FontWeight.w800)),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: secondaryColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const Text(
-                'Ready',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+  decoration: BoxDecoration(
+    color: secondaryColor,
+    borderRadius: BorderRadius.circular(16),
+  ),
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Home()), //diarahin ke home lagi
+      );
+    },
+    child: const Text(
+      'Ready',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+),
+
           ],
         ),
         leading: IconButton(
@@ -185,14 +200,14 @@ Nanti tiap item (msg) diolah di .map() menjadi ewidget*/
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: tertiaryColor, // Warna border saat aktif (focus)
                           width: 2.0,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.grey, // Warna border saat tidak aktif
                           width: 1.5,
                         ),
